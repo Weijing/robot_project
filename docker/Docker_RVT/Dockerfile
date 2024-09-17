@@ -4,12 +4,12 @@ FROM osrf/ros:noetic-desktop
 
 ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update && \
-    apt-get install -y pip git vim 
+    apt-get install -y pip git vim wget
 
 
 RUN pip install --upgrade pip -i https://pypi.mirrors.ustc.edu.cn/simple/
 RUN pip install cffi -i https://pypi.mirrors.ustc.edu.cn/simple/
-
+RUN pip install torch==1.12.1 torchvision==0.13.1 torchaudio==0.12.1 --index-url https://download.pytorch.org/whl/cu113
 
 # install coppliasim 4.1 and setup the environment
 WORKDIR /home

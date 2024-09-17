@@ -4,7 +4,7 @@ FROM osrf/ros:noetic-desktop
 
 ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update && \
-    apt-get install -y pip git vim 
+    apt-get install -y pip git vim wget
 
 
 RUN pip install --upgrade pip -i https://pypi.mirrors.ustc.edu.cn/simple/
