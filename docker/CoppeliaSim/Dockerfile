@@ -17,12 +17,12 @@ RUN wget https://downloads.coppeliarobotics.com/V4_1_0/CoppeliaSim_Player_V4_1_0
 
 RUN mkdir -p /home/CoppeliaSim
 RUN tar -xf CoppeliaSim_Player_V4_1_0_Ubuntu20_04.tar.xz
-RUN mv CoppeliaSim_Player_V4_1_0_Ubuntu20_04 CoppeliaSim
+# RUN mv CoppeliaSim_Player_V4_1_0_Ubuntu20_04 CoppeliaSim
 
-RUN echo "export COPPELIASIM_ROOT=/home/CoppeliaSim" >> ~/.bashrc
+RUN echo "export COPPELIASIM_ROOT=/home/CoppeliaSim_Player_V4_1_0_Ubuntu20_04" >> ~/.bashrc
 RUN echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$COPPELIASIM_ROOT'   >> ~/.bashrc
 RUN echo 'export QT_QPA_PLATFORM_PLUGIN_PATH=$COPPELIASIM_ROOT' >> ~/.bashrc
-RUN export COPPELIASIM_ROOT=/home/CoppeliaSim
+RUN export COPPELIASIM_ROOT=/home/CoppeliaSim_Player_V4_1_0_Ubuntu20_04
 RUN export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$COPPELIASIM_ROOT
 RUN export QT_QPA_PLATFORM_PLUGIN_PATH=$COPPELIASIM_ROOT
 
@@ -30,9 +30,10 @@ RUN export QT_QPA_PLATFORM_PLUGIN_PATH=$COPPELIASIM_ROOT
 # RUN pip install git+https://github.com/stepjam/PyRep.git@231a1ac6b0a179cff53c1d403d379260b9f05f2f
 # RUN pip install git+https://github.com/buttomnutstoast/RLBench.git@587a6a0e6dc8cd36612a208724eb275fe8cb4470
 
-COPY ./3rd /home/
-RUN ls /home
-ENV COPPELIASIM_ROOT /home/CoppeliaSim
-RUN pip install -e /home/PyRep 
-
+# clone or copy the version of PyRep and RLBench into ./3rd folder, then use the followings
+#COPY ./3rd /home/
+#RUN ls /home
+#ENV COPPELIASIM_ROOT /home/CoppeliaSim_Player_V4_1_0_Ubuntu20_04
+#RUN pip install -e /home/PyRep 
+#RUN pip install -e /home/RLBench
 
