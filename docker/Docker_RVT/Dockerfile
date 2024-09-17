@@ -19,8 +19,8 @@ RUN mkdir -p /home/CoppeliaSim
 RUN tar -xf CoppeliaSim_Player_V4_1_0_Ubuntu20_04.tar.xz -C /home/CoppeliaSim
 
 RUN echo "export COPPELIASIM_ROOT=/home/CoppeliaSim" >> ~/.bashrc
-RUN echo "export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$COPPELIASIM_ROOT"   >> ~/.bashrc
-RUN echo "export QT_QPA_PLATFORM_PLUGIN_PATH=$COPPELIASIM_ROOT" >> ~/.bashrc
+RUN echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$COPPELIASIM_ROOT'   >> ~/.bashrc
+RUN echo 'export QT_QPA_PLATFORM_PLUGIN_PATH=$COPPELIASIM_ROOT' >> ~/.bashrc
 RUN export COPPELIASIM_ROOT=/home/CoppeliaSim
 RUN export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$COPPELIASIM_ROOT
 RUN export QT_QPA_PLATFORM_PLUGIN_PATH=$COPPELIASIM_ROOT
@@ -30,10 +30,11 @@ RUN export QT_QPA_PLATFORM_PLUGIN_PATH=$COPPELIASIM_ROOT
 # RUN pip install git+https://github.com/buttomnutstoast/RLBench.git@587a6a0e6dc8cd36612a208724eb275fe8cb4470
 
 
-COPY ./RVT /home/ws
-RUN pip install -e /home/ws/RVT/rvt/libs/PyRep 
-RUN pip install -e /home/ws/RVT/rvt/libs/RLBench 
-RUN pip install -e /home/ws/RVT/rvt/libs/YARR 
+COPY ./RVT /home/
+ENV COPPELIASIM_ROOT /home/CoppeliaSim
+RUN pip install -e /home/rvt/libs/PyRep 
+RUN pip install -e /home/rvt/libs/RLBench 
+RUN pip install -e /home/rvt/libs/YARR 
 # RUN pip install -e rvt/libs/peract_colab
 
 # require pytorch3D
