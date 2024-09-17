@@ -16,7 +16,8 @@ WORKDIR /home
 RUN wget https://downloads.coppeliarobotics.com/V4_1_0/CoppeliaSim_Player_V4_1_0_Ubuntu20_04.tar.xz
 
 RUN mkdir -p /home/CoppeliaSim
-RUN tar -xf CoppeliaSim_Player_V4_1_0_Ubuntu20_04.tar.xz -C /home/CoppeliaSim
+RUN tar -xf CoppeliaSim_Player_V4_1_0_Ubuntu20_04.tar.xz 
+RUN mv CoppeliaSim_Player_V4_1_0_Ubuntu20_04 CoppeliaSim
 
 RUN echo "export COPPELIASIM_ROOT=/home/CoppeliaSim" >> ~/.bashrc
 RUN echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$COPPELIASIM_ROOT'   >> ~/.bashrc
