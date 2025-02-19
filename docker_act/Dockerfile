@@ -1,5 +1,6 @@
-FROM pytorch/pytorch:1.12.1-cuda11.3-cudnn8-runtime
+#FROM pytorch/pytorch:1.12.1-cuda11.3-cudnn8-runtime
 # FROM cnstark/pytorch:2.3.1-py3.10.15-cuda12.1.0-ubuntu22.04
+FROM pytorch/pytorch:1.13.1-cuda11.6-cudnn8-runtime
 
 ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update 

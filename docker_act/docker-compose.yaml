@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  shenlan_pytorch:
+    build: .
+    # image: osrf/ros:noetic-desktop-full
+    # image: pytorch/pytorch:1.13.1-cuda11.6-cudnn8-runtime
+    container_name: shenlan_pytorch_v2
+    
+    # 端口映射可以根据需要进行修改
+    # ports:
+    #   - "8080:80"
+    environment:
+      - DISPLAY=${DISPLAY}
+      - GDK_SCALE=${GDK_SCALE}
+      - GDK_DPI_SCALE=${GDK_DPI_SCALE}
+      - XAUTHORITY=${XAUTHORITY}
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+      - ../:/home/ws
+      - /dev/bus/usb:/dev/bus/usb
+      - /dev/dri:/dev/dri
+    command: >
+      /bin/bash
+    network_mode: host
+    ipc: host
+    privileged: true
+    group_add:
+      - video
+    stdin_open: true  # Keep the STDIN open for interactive mode
+    tty: true         # Allocate a pseudo-TTY
+
+    # 如果想要重新启动容器，可以添加重启策略
+    restart: unless-stopped
+

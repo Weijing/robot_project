@@ -1,5 +1,7 @@
 # FROM pytorch/pytorch:1.12.1-cuda11.3-cudnn8-runtime
-FROM cnstark/pytorch:2.3.1-py3.10.15-cuda12.1.0-ubuntu22.04
+# FROM cnstark/pytorch:2.3.1-py3.10.15-cuda12.1.0-ubuntu22.04
+# FROM cnstark/pytorch:1.12.0-py3.9.12-cuda11.3.1-ubuntu20.04
+FROM pytorch/pytorch:2.4.1-cuda12.1-cudnn9-runtime
 
 ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update 
@@ -9,6 +11,9 @@ RUN apt-get install -y libglib2.0-0 libsm6 libxrender1 libxext6
 
 
 RUN pip install --upgrade pip -i https://pypi.mirrors.ustc.edu.cn/simple/
+
+RUN apt-get install -y libglfw3
+
 # RUN pip install torch==1.12.1 torchvision==0.13.1 torchaudio==0.12.1 --index-url https://download.pytorch.org/whl/cu113
 
 # RUN conda create -n act_a1 python=3.8.10 
