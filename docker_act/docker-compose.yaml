@@ -32,4 +32,13 @@ services:
 
     # 如果想要重新启动容器，可以添加重启策略
     restart: unless-stopped
-
+    
+    # 添加 NVIDIA GPU 支持
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all  # 使用所有可用的 GPU，也可以指定具体数量，如 1
+              capabilities: [gpu]
+    runtime: nvidia
